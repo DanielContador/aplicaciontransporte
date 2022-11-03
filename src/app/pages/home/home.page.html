@@ -1,0 +1,219 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Comienza el Header -->
+<ion-header>
+    <p id="tool">
+        <mat-toolbar color="warning">
+            <ion-menu-toggle>
+                <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                  <mat-icon>menu</mat-icon>
+                </button>
+            </ion-menu-toggle>
+
+            <span>tellevoApp</span>
+            <span class="example-spacer"></span>
+            <button (click)="salir()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+        </mat-toolbar>
+    </p>
+
+
+
+</ion-header>
+<!-- Termina el Header -->
+
+<!-- Comienza el Content -->
+<ion-content>
+    <ion-menu side="start" menuId="first" contentId="main">
+        <ion-header>
+            <ion-toolbar color="warning">
+                <ion-title>Opciones</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-list>
+                <ion-item>
+                    <p>Contactos</p>
+                    <span class="example-spacer"></span>
+                    <ion-icon name="happy-outline"></ion-icon>
+                </ion-item>
+
+            </ion-list>
+            <ion-list>
+                <ion-item>
+                    <p>Convenios</p>
+                    <span class="example-spacer"></span>
+                    <ion-icon name="laptop-outline"></ion-icon>
+                </ion-item>
+            </ion-list>
+            <ion-list>
+                <ion-item>
+                    <p>Medios de pago</p>
+                    <span class="example-spacer"></span>
+                    <ion-icon name="card-outline"></ion-icon>
+                </ion-item>
+            </ion-list>
+            <ion-list>
+                <ion-item>
+                    <p>Preguntas frecuentes</p>
+                    <span class="example-spacer"></span>
+                    <ion-icon name="help-outline"></ion-icon>
+                </ion-item>
+            </ion-list>
+            <ion-list>
+                <ion-item>
+                    <p>Ayuda</p>
+                    <span class="example-spacer"></span>
+                    <ion-icon name="help-buoy-outline"></ion-icon>
+                </ion-item>
+            </ion-list>
+            <ion-list>
+                <ion-item>
+                    <p>Invitar a un amigo</p>
+                    <span class="example-spacer"></span>
+                    <ion-icon name="person-add-outline"></ion-icon>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+
+
+
+    <div class="ion-page" id="main">
+        <ion-content class="ion-padding">
+
+
+
+            <ion-header collapse="condense">
+
+
+
+            </ion-header>
+            <ion-chip #animacion2 class="ion-text-center">
+
+                <ion-avatar>
+                    <img src="assets/icon/usuario.png" />
+                </ion-avatar>
+                <ion-label>{{user}}</ion-label>
+
+            </ion-chip>
+
+            <ion-slides [options]="option" class="ion-margin-top">
+                <ion-slide>
+                    <ion-card>
+                        <img src="assets/slide.jpeg">
+                    </ion-card>
+                </ion-slide>
+                <ion-slide>
+                    <ion-card>
+                        <img src="assets/slider2.jpeg">
+                    </ion-card>
+                </ion-slide>
+                <ion-slide>
+                    <ion-card>
+                        <img src="assets/slider3.jpeg">
+                    </ion-card>
+                </ion-slide>
+            </ion-slides>
+
+            <!-- Comienza un Card -->
+            <ion-toolbar>
+                <ion-segment value="pasajero" (ionChange)="segmentChanged($event)">
+                    <ion-segment-button (click)="onButtonClick()" value="conductor">
+                        <ion-icon name="car-sport-outline"></ion-icon>
+                    </ion-segment-button>
+
+                    <ion-segment-button (click)="onButtonClick()" value="pasajero">
+                        <ion-icon name="man-outline"></ion-icon>
+                    </ion-segment-button>
+                </ion-segment>
+            </ion-toolbar>
+            <ion-content id="micontent" *ngIf="buttonClicked">
+
+                <ion-router-outlet></ion-router-outlet>
+            </ion-content>
+
+            <!-- Termina un Card -->
+            <ion-content id="micontent2" *ngIf="mapClick">
+                <mapbox-component></mapbox-component>
+            </ion-content>
+
+            <!--agregar viaje-->
+            <div class="ion-padding-vertical" *ngIf="mapClick">
+
+                <ion-card class="ion-text-center">
+                    <ion-card-title>
+                        <ion-label>
+                            <h1>Nuevo Viaje</h1>
+                        </ion-label>
+                    </ion-card-title>
+        
+                    <ion-card-content>
+                        <ion-item>
+                            <ion-label  position="floating">Hora</ion-label>
+                            <ion-input type="text" [(ngModel)]="Auto"></ion-input>
+                        </ion-item>
+        
+                        <ion-item>
+                            <ion-label position="floating">Direccion</ion-label>
+                            <ion-input type="text" [(ngModel)]="pasajeros"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="floating">Costo de viaje</ion-label>
+                            <ion-input type="text" [(ngModel)]="direccion"></ion-input>
+                        </ion-item>
+                    </ion-card-content>
+                    <ion-button shape="block" (click)="guardar()">Guardar viaje</ion-button>
+                </ion-card>
+        
+        
+        
+            </div>
+<!--Listar viajes-->
+            <div  *ngIf="listarViaje">
+  
+                <div >
+                    
+                    <h1 >Listado de Viajes</h1>
+                    
+                    <ion-list>
+                      <ion-item-sliding *ngFor="let n of viajes">
+                        <ion-item>
+                          <ion-item>
+            
+                            <ion-label>
+                                <h2 id="tamano">Hora</h2>
+                                <p id="tamano2" style="word-wrap: break-word; white-space: normal;">{{n.Auto}}</p>
+                              <h2 id="tamano">Direccion de destino</h2>
+                              <p id="tamano2" style="word-wrap: break-word; white-space: normal;">{{n.pasajeros}}</p>
+                              <h2 id="tamano">Costo del viaje</h2>
+                              <p id="tamano2"style="word-wrap: break-word; white-space: normal;">${{n.direccion}}</p>
+                            </ion-label>
+                          </ion-item>
+                        </ion-item>
+                        <ion-item-options side="end">
+                          <ion-item-option (click)="unirse()">
+                            <ion-icon name="create" ></ion-icon> Unirse al viaje
+                          </ion-item-option>
+
+                        </ion-item-options>      
+                      </ion-item-sliding>
+                    </ion-list>
+                   
+                </div>
+            </div>
+
+
+
+            <div class="square" #squareA>
+
+                <img #animacion1 src="assets/rueda.png">
+
+            </div>
+        </ion-content>
+
+
+        <!-- Termina el Content -->

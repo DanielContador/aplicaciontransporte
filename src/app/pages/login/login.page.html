@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar color="warning">
+        <ion-title color="primary" class="ion-text-center">tellevoApp</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+   <ion-card class="card">
+        
+            <ion-card-header>
+                <ion-text>Iniciar Sesión</ion-text>
+            </ion-card-header>
+        
+        <ion-card-content>
+            <ion-item lines="full">
+                
+                <ion-label position="floating">Usuario</ion-label>
+                 <!--Usamos ngModel para indicarle al input el objeto a utilizar-->
+                <ion-input type="text " [(ngModel)]="user.usuario" minlength="3 " maxlength="20 "></ion-input>
+            </ion-item>
+            <ion-item lines="full ">
+                <!--Usamos ngModel para indicarle al input el objeto a utilizar-->
+                <ion-label position="floating ">Password</ion-label>
+                <ion-input type="password" [(ngModel)]="user.password " minlength="2 " maxlength="10"></ion-input>
+            </ion-item>
+            <ion-row>
+                <ion-col>
+                   
+                    <ion-button expand="full " (click)="ingresar() ">Ingresar</ion-button>
+                </ion-col>
+                <ion-col>
+                     <!--Indicamos mediante el (click) la funcion a quien referenciara-->
+                    
+                    <ion-router-link (click)="recuperar()" class="underline">Recuperar contraseña</ion-router-link>
+                
+
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <img src="assets/azul.png ">
+        <ion-card-header>
+            <ion-card-subtitle>Bienvenido a tellevoApp</ion-card-subtitle>
+            
+        </ion-card-header>
+    </ion-card>
+
+</ion-content>

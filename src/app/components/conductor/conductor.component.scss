@@ -1,0 +1,42 @@
+ion-card-title{
+    font-size: 20px;
+    padding-left: 7px;
+    margin-top: 10px;
+    text-align: center;
+    height: 70px;
+    color: #ffffff;
+    padding-top: 10px;
+}
+
+ion-item{
+    width: 80%;
+    font-size: 12px;
+    margin-left: 15px;
+    margin-top: 10px;
+    padding-top: 5px;
+    border: 1px solid #3f3f3f;
+    background-image: url(../../../assets/fondo.jpg);
+    
+    
+}
+ion-content{
+    margin-top: 50px;
+    padding-top: 50px;
+    margin-left: 5px;
+    width: 100%;
+    background-image: url(../../../assets/fondo.jpg);
+    height: 320px;
+    
+}
+
+ion-card{
+    
+    background-image: url(../../../assets/fondo.jpg);
+
+}
+.ion-page {
+    height: 320px;
+}
+h2{
+    font-size: 1000px;
+}

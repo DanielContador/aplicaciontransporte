@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar color="warning">
+        <ion-title color="primary">Recuperar contraseña</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-item>
+            <ion-label position="stacked">Ingrese su correo</ion-label>
+            <!-- Usamos ngModel para indicarle al input el objeto a utilizar-->
+            <ion-input type="text" placeholder="Correo@ejemplo.com" [(ngModel)]="correo" minlength="8" maxlength="20"></ion-input>
+            <ion-row>
+                <ion-col>
+                    <ion-button expand="full " (click)="presentAlert()">Enviar</ion-button>
+
+                </ion-col>
+                <ion-col>
+                    <ion-button expand="full " (click)="login()">Volver</ion-button>
+
+                </ion-col>
+
+            </ion-row>
+        </ion-item>
+
+    </ion-card>
+</ion-content>
